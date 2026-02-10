@@ -5,7 +5,6 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -34,7 +33,7 @@ public class Livro {
     @Column(name = "preco",precision = 18, scale = 2)
     private BigDecimal preco;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_autor")
     private Autor autor;
 }
