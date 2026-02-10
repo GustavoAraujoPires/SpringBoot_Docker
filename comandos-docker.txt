@@ -1,0 +1,23 @@
+Check port:
+
+netstat -aof | findstr 5432 // verifica se a porta esta sendo usada
+
+# Create network
+docker network create library-networks
+
+#Agora para apontar o container para a network - comando: --network library-networks
+ docker run --name pgdmin4 -e PGADMIN_DEFAULT_EMAIL=gusatavoaraujopires9@gmail.com -e PGADMIN_DEFAULT_PASSWORD=admin -p 15432:80 --network library-networks dpage/pgadmin4:8.9
+
+docker run --name library -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=library -p 5432:5432 --network library-networks postgres:16.3
+
+#Rodar container Postgre na versão 16.3
+docker run --name library -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=library -p 5432:5432 postgres:16.3
+
+#Rodar Pgadmin 4
+docker run --name pgdmin4gustavo3 -e PGADMIN_DEFAULT_EMAIL=gustavoaraujopires9@gmail.com -e PGADMIN_DEFAULT_PASSWORD=adimin -p 15432:80 dpage/pgadmin4:8.9
+
+#para o container libraryDb apontar para network
+C:\Users\U'suario>docker run --name libraryDb -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=library --network library-networks postgres:16.3
+
+#serve para remover (excluir) uma rede Docker chamada library-networks.
+docker network rm library-networks

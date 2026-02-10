@@ -1,0 +1,186 @@
+
+        LISTA DE COMANDOS DOCKER (COM DESCRIÇÃO)
+
+🔹 1. Informações gerais
+docker --version
+
+➡️ Mostra a versão do Docker instalada.
+
+docker info
+
+➡️ Exibe informações detalhadas do Docker (containers, imagens, armazenamento, redes).
+
+🔹 2. Imagens
+docker images
+
+➡️ Lista todas as imagens Docker disponíveis na máquina.
+
+docker pull nome_imagem
+
+➡️ Baixa uma imagem do Docker Hub.
+
+docker pull postgres:16.3
+
+docker rmi ID_IMAGEM
+
+➡️ Remove uma imagem do sistema.
+
+docker image prune
+
+➡️ Remove imagens não utilizadas.
+
+🔹 3. Containers
+docker ps
+
+➡️ Lista apenas os containers em execução.
+
+docker ps -a
+
+➡️ Lista todos os containers (ativos e parados).
+
+docker run nome_imagem
+
+➡️ Cria e executa um container a partir de uma imagem.
+
+docker stop ID_OU_NOME
+
+➡️ Para a execução de um container.
+
+docker start ID_OU_NOME
+
+➡️ Inicia um container que estava parado.
+
+docker restart ID_OU_NOME
+
+➡️ Reinicia um container.
+
+docker rm ID_OU_NOME
+
+➡️ Remove um container parado.
+
+docker container prune
+
+➡️ Remove todos os containers parados.
+
+🔹 4. Logs e acesso ao container
+docker logs ID_OU_NOME
+
+➡️ Mostra os logs do container.
+
+docker logs -f ID_OU_NOME
+
+➡️ Acompanha os logs em tempo real.
+
+docker exec -it ID_OU_NOME bash
+
+➡️ Acessa o terminal do container (modo interativo).
+
+🔹 5. Docker run – principais opções
+--name
+
+➡️ Define um nome para o container.
+
+docker run --name api-library imagem
+
+-p HOST:CONTAINER
+
+➡️ Mapeia portas.
+
+docker run -p 8080:8080 imagem
+
+-e VAR=valor
+
+➡️ Define variáveis de ambiente.
+
+-e POSTGRES_PASSWORD=postgres
+
+-v VOLUME:CAMINHO
+
+➡️ Cria persistência de dados.
+
+-v dados_pg:/var/lib/postgresql/data
+
+-d
+
+➡️ Executa o container em background.
+
+🔹 6. Redes (Network)
+docker network ls
+
+➡️ Lista todas as redes Docker.
+
+docker network create nome-rede
+
+➡️ Cria uma rede personalizada para comunicação entre containers.
+
+docker network rm nome-rede
+
+➡️ Remove uma rede que não está em uso.
+
+docker network inspect nome-rede
+
+➡️ Mostra detalhes da rede e containers conectados.
+
+🔹 7. Volumes (persistência)
+docker volume ls
+
+➡️ Lista todos os volumes.
+
+docker volume create nome-volume
+
+➡️ Cria um volume Docker.
+
+docker volume rm nome-volume
+
+➡️ Remove um volume.
+
+docker volume inspect nome-volume
+
+➡️ Mostra detalhes do volume.
+
+🔹 8. Docker Compose
+docker compose up
+
+➡️ Sobe todos os serviços definidos no docker-compose.yml.
+
+docker compose up -d
+
+➡️ Sobe os serviços em background.
+
+docker compose down
+
+➡️ Para e remove containers, redes e volumes do Compose.
+
+docker compose ps
+
+➡️ Lista serviços em execução.
+
+docker compose logs
+
+➡️ Exibe logs dos serviços.
+
+🔹 9. Limpeza do sistema (⚠️ cuidado)
+docker system prune
+
+➡️ Remove containers, imagens e redes não utilizadas.
+
+docker image prune
+
+➡️ Remove imagens sem uso.
+
+docker volume prune
+
+➡️ Remove volumes não utilizados.
+
+docker network prune
+
+➡️ Remove redes não utilizadas.
+
+🔹 10. Comandos úteis no dia a dia
+docker inspect ID_OU_NOME
+
+➡️ Exibe todas as informações técnicas do container.
+
+docker stats
+
+➡️ Mostra uso de CPU e memória dos containers em tempo real.
