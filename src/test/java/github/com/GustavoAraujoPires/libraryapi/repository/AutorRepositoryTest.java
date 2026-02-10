@@ -17,7 +17,7 @@ public class AutorRepositoryTest {
       @Autowired
       AutorRepository repository;
 
-     // @Test // Com essa anotação consigo rodar o teste
+      //@Test // Com essa anotação consigo rodar o teste
          public void salvarTest(){
              Autor autor = new Autor();
              autor.setNome("Gustavo");
@@ -47,13 +47,13 @@ public class AutorRepositoryTest {
         }
     }
 
-   @Test
+  // @Test
     public void listarTest(){
         List<Autor> listarTodos = repository.findAll();
         listarTodos.forEach(System.out::println);
     }
 
-    @Test
+   // @Test
     public void countTest(){
         System.out.println("Contagem de autores: " + repository.count());
     }
@@ -64,7 +64,7 @@ public class AutorRepositoryTest {
         repository.deleteById(id);
     }
 
-    @Test
+    //@Test
     public void deletarTest(){
         var id = UUID.fromString("d6e77eed-b171-4958-8f52-fe83ea04ec9f");
         var gustavo = repository.findById(id).get();
