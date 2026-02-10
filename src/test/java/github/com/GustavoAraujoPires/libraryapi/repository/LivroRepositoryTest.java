@@ -32,11 +32,8 @@ class LivroRepositoryTest {
         Autor autor = autorRepository
                 .findById(UUID.fromString("bde89528-a780-4828-9a8f-072601e9054e"))
                 .orElse(null);
-
         livro.setAutor(autor);
-
         repository.save(livro);
-
     }
 
     //@Test
@@ -53,13 +50,9 @@ class LivroRepositoryTest {
         autor.setNacionalidade("Brasileiro");
         autor.setDataNascimento(LocalDate.of(1965, 7 , 31));
         autorRepository.save(autor);
-
         livro.setAutor(autor);
-
         repository.save(livro);
-
     }
-
 
    // @Test
     void salvarCascadeTest(){
@@ -74,14 +67,11 @@ class LivroRepositoryTest {
         autor.setNome("João");
         autor.setNacionalidade("Brasileiro");
         autor.setDataNascimento(LocalDate.of(2008, 1 , 31));
-
         livro.setAutor(autor);
-
         repository.save(livro);
-
     }
 
-    @Test
+   // @Test
     void atualizarAutor(){
         UUID id = UUID.fromString("d337f895-6554-4b85-9ab7-4bc409b699b9");
         var livroParaAtualizar = repository.findById(id).orElse(null);
@@ -92,7 +82,11 @@ class LivroRepositoryTest {
         livroParaAtualizar.setAutor(jose);
 
         repository.save(livroParaAtualizar);
+    }
 
-
+    @Test
+    void deletarTest(){
+        UUID id = UUID.fromString("d337f895-6554-4b85-9ab7-4bc409b699b9");
+        repository.deleteById(id);
     }
 }
