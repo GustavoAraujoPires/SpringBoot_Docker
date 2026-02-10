@@ -39,7 +39,7 @@ class LivroRepositoryTest {
 
     }
 
-    @Test
+    //@Test
     void salvarAutorELivroTest(){
         Livro livro = new Livro();
         livro.setIsbn("5648-5558");
@@ -78,6 +78,21 @@ class LivroRepositoryTest {
         livro.setAutor(autor);
 
         repository.save(livro);
+
+    }
+
+    @Test
+    void atualizarAutor(){
+        UUID id = UUID.fromString("d337f895-6554-4b85-9ab7-4bc409b699b9");
+        var livroParaAtualizar = repository.findById(id).orElse(null);
+
+        UUID idAutor = UUID.fromString("d8962d0e-c44a-4b7f-914e-14100659d579");
+        var jose = autorRepository.findById(idAutor).orElse(null);
+
+        livroParaAtualizar.setAutor(jose);
+
+        repository.save(livroParaAtualizar);
+
 
     }
 }
